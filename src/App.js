@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import scores from './scores';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scores: 0,
+    };
+  }
+
+  render() {
+    console.log(scores[0]);
+    return (
+      <div className="App">
+        <form>
+          <label htmlFor="candidateId">
+            Please enter the candidate id (e.g. 123) here to see their
+            percentiles
+          </label>
+          <input
+            type="search"
+            id="candidateId"
+            name="candidateId"
+            placeholder=" candidate id"
+            required
+            pattern="\d{3}"
+          ></input>
+          <input type="submit" value="Submit"></input>
+        </form>
+        <div className="results">
+          <h2>Results</h2>
+          <div>{this.state.scores}</div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
